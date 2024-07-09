@@ -1,0 +1,58 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Blog Post</title>
+    {% tailwind_css %}
+</head>
+<body>
+    <div class="mt-4 mx-5">
+        <a href="{% url 'Blog' %}" class="border p-3 bg-gray-800 text-white hover:border-r-orange-300 rounded-xl hover:bg-sky-500 transition duration-300">Go Back</a>
+    </div>
+
+    {% if messages %}
+        {% for messg in messages %}
+            <div class="m-3 p-3 bg-red-500 text-white rounded-lg shadow-md">
+                <p class="font-bold">{{ messg }}</p>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+
+            <div class="bg-gray-100 flex items-center justify-center h-screen">
+
+
+                <div class="container mx-auto px-4 py-6 max-w-3xl">
+                    <p class="mb-2 text-2xl text-center text-white bg-indigo-700 rounded-lg p-3 shadow-lg">Create Blog by filling these fields</p>
+            
+                    <form action="{% url 'create_blog' %}" method="POST" enctype="multipart/form-data" class="bg-white p-5 rounded-lg shadow-lg">
+                        {% csrf_token %}
+                        <div class="grid gap-6">
+                            <div>
+                                <label for="title" class="block text-lg font-medium text-gray-700">Title</label>
+                                <input type="text" name="title" id="title" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+                            </div>
+                            <div>
+                                <label for="sub_title" class="block text-lg font-medium text-gray-700">Sub Title</label>
+                                <input type="text" name="sub_title" id="sub_title" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+                            </div>
+                            <div>
+                                <label for="description" class="block text-lg font-medium text-gray-700">Description</label>
+                                <textarea name="description" id="description" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" cols="30" rows="10" required></textarea>
+                            </div>
+                            <div>
+                                <label for="image" class="block text-lg font-medium text-gray-700">Image</label>
+                                <input type="file" name="image" id="image" class="w-full p-3 border border-gray-300 rounded-lg bg-cyan-500 text-white cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+                            </div>
+                            <div>
+                                <input type="submit" value="Submit" class="w-full p-3 bg-indigo-600 text-white rounded-lg cursor-pointer hover:bg-indigo-700 transition duration-300">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+</body>
+</html>

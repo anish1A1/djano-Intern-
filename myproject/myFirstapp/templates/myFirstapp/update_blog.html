@@ -1,0 +1,27 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% tailwind_css %}
+</head>
+<body>
+    <p>Update the Blog from here..</p>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="title">Title</label>
+        <input type="text" name="title" value="{{ blog.title }}" required>
+        <label for="Sub Title">Sub Title</label>
+        <input type="text" name="sub_title" value="{{ blog.sub_title }}" required>
+        <label for="description">Description</label>
+        <textarea name="description" value="{{ blog.description }}" cols="30" rows="10 required"></textarea>
+        <label for="image">Image</label>
+        <input class="bg-cyan-500 p-3" type="file" name="image" required>
+
+        <input type="submit" value="Submit" placeholder="Submit">
+        
+    </form> 
+</body>
+</html>
