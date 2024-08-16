@@ -1,0 +1,39 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% tailwind_css %}
+</head>
+<body>
+    <header class="bg-slate-600">
+        <div class="flex justify-between">
+            <!-- Home Link -->
+            <div class="m-3 flex justify-center p-3">
+                <a href="{% url 'home' %}" class="text-white">Home</a>
+            </div>
+    
+            <!-- Navigation Links -->
+            <div class="flex flex-row">
+                <div class="p-3 flex justify-center m-3 gap-4">
+                    <a href="{% url 'Blog' %}" class="text-white">Blog</a>
+    
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'logout_user' %}" class="text-white">Logout</a>
+                    {% else %}
+                        <a href="{% url 'user_login' %}" class="text-white">Login</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    {% block content %}
+        
+    {% endblock content %}
+        <!-- <footer></footer> -->
+    
+</body>
+</html>

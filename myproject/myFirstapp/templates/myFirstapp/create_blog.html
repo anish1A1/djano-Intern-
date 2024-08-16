@@ -1,24 +1,18 @@
-{% load static tailwind_tags %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Blog Post</title>
-    {% tailwind_css %}
-</head>
-<body>
+{% extends 'myFirstapp/headers.html' %}
+    {% block content %}
+    
+
     <div class="mt-4 mx-5">
         <a href="{% url 'Blog' %}" class="border p-3 bg-gray-800 text-white hover:border-r-orange-300 rounded-xl hover:bg-sky-500 transition duration-300">Go Back</a>
     </div>
 
-    {% if messages %}
+    <!-- {% if messages %}
         {% for messg in messages %}
             <div class="m-3 p-3 bg-red-500 text-white rounded-lg shadow-md">
                 <p class="font-bold">{{ messg }}</p>
             </div>
         {% endfor %}
-    {% endif %}
+    {% endif %} -->
 
 
             <div class="bg-gray-100 flex items-center justify-center h-screen">
@@ -27,7 +21,7 @@
                 <div class="container mx-auto px-4 py-6 max-w-3xl">
                     <p class="mb-2 text-2xl text-center text-white bg-indigo-700 rounded-lg p-3 shadow-lg">Create Blog by filling these fields</p>
             
-                    <form action="{% url 'create_blog' %}" method="POST" enctype="multipart/form-data" class="bg-white p-5 rounded-lg shadow-lg">
+                    <form action="" method="POST" enctype="multipart/form-data" class="bg-white p-5 rounded-lg shadow-lg">
                         {% csrf_token %}
                         <div class="grid gap-6">
                             <div>
@@ -54,5 +48,4 @@
                 </div>
 
             </div>
-</body>
-</html>
+{% endblock %}

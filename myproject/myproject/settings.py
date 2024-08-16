@@ -25,8 +25,16 @@ SECRET_KEY = 'django-insecure-qkpkfna%lk#4ww(-1qtb*)r25_5fohxv#^@xkbv44oy9!i@b-&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    ".railway.app"     #https://saas.prod.railway.app
+]
 
+if DEBUG:
+    ALLOWED_HOSTS += [
+        "127.0.0.1",
+        "localhost",
+        
+    ]
 
 # Application definition
 
@@ -41,6 +49,7 @@ INSTALLED_APPS = [
     'theme',      #added when downloading tailwind
     'django_browser_reload',  #added when downloading tailwind  .It helps to refresh the page automatically
     'myFirstapp',
+    'authentications',
 ]
 
 TAILWIND_APP_NAME = 'theme'
@@ -151,6 +160,8 @@ MEDIA_ROOT = BASE_DIR / 'media'     #the full path of the directory to store the
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_URL = "/login/"
 
 
 #pass of superuser anish :> myproject

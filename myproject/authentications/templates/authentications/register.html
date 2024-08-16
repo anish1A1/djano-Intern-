@@ -1,0 +1,38 @@
+{% extends 'myFirstapp/headers.html' %}
+    {% block content %}
+    
+    <div>
+        <h1>My First Heading</h1>
+        
+       
+       {% if form.errors %}
+        <div>
+            <p>There was an error in form: </p>
+            {% for fields,errors in form.errors.items %}
+            
+            {% for error in errors %}
+            <li> {{ fields| title }} : {{error}} </li>
+                
+            {% endfor %}
+                
+            
+            
+            {% endfor %}
+        </div>
+       {% endif %}
+        
+            
+    </div>
+    <form action="{% url 'register' %}" method="post">
+        {% csrf_token %}
+
+            <input type="text" name="username" placeholder="username">
+            <input type="password" name="password1" placeholder="password">
+            <input type="password" name="password2" placeholder="confirm password">
+            <input name="email"  type="email" placeholder="Email">
+            <input name="first_name" type="text" placeholder="First Name">
+            <input name="Last Name" placeholder="Last Name" type="text">
+
+        <button type="submit">Register </button>
+    </form>
+{% endblock %}

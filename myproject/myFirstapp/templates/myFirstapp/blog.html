@@ -1,17 +1,16 @@
 
-{% load static tailwind_tags %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    {% tailwind_css %}
-    <style>
-        
-    </style>
-</head>
-<body>
+{% extends 'myFirstapp/headers.html' %}
+    {% block content %}
+    
+    
+    {% if messages %}
+        {% for messg in messages %}
+            <div class="m-3 p-3 bg-red-500 text-white rounded-lg shadow-md">
+                <p class="font-bold">{{ messg }}</p>
+            </div>
+        {% endfor %}
+    {% endif %}
+    
     <div class="m-5">
 
         <h1 class="m-5 pl-5  text-xl text-center text-white bg-indigo-700 rounded-lg p-3 "> All Blogs are shown here</h1>
@@ -54,6 +53,4 @@
 
 
     
-    
-</body>
-</html>
+{% endblock %}

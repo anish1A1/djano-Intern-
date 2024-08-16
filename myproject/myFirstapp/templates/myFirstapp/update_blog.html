@@ -1,13 +1,21 @@
-{% load static tailwind_tags %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    {% tailwind_css %}
-</head>
-<body>
+{% extends 'myFirstapp/headers.html' %}
+    {% block content %}
+    
+
+
+    <div class="mt-4 mx-5">
+        <a href="{% url 'Blog' %}" class="border p-3 bg-gray-800 text-white hover:border-r-orange-300 rounded-xl hover:bg-sky-500 transition duration-300">Go Back</a>
+    </div>
+
+{% if messages %}
+    {% for messg in messages %}
+        <div class="m-3 p-3 bg-red-500 text-white rounded-lg shadow-md">
+            <p class="font-bold">{{ messg }}</p>
+        </div>
+    {% endfor %}
+{% endif %}
+
+
     <p>Update the Blog from here..</p>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
@@ -22,6 +30,7 @@
 
         <input type="submit" value="Submit" placeholder="Submit">
         
-    </form> 
-</body>
-</html>
+    </form>
+    {% endblock %}
+<!--     Q -->
+

@@ -1,0 +1,21 @@
+{% extends 'myFirstapp/headers.html' %}
+    {% block content %}
+    
+        {% if messages %}
+        {% for messg in messages %}
+            <div class="m-3 p-3 bg-red-500 text-white rounded-lg shadow-md">
+                <p class="font-bold">{{ messg }}</p>
+            </div>
+        {% endfor %}
+    {% endif %} 
+
+    <form action="{% url 'user_login' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Username">
+        <br>
+        <input type="password" name="password1" placeholder="Password">
+        <br>
+        <button type="submit"> Submit </button> 
+    </form>
+    <a href="{% url 'register' %}" > Register</a>
+{% endblock %}
